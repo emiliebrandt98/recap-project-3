@@ -1,4 +1,5 @@
 import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js";
+import { SearchBar } from "./components/SearchBar/SearchBar.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -32,14 +33,13 @@ export async function fetchCharacters() {
 }
 fetchCharacters();
 
-// ------------- Search-Button -------------
-searchBar.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const input = document.querySelector(".search-bar__input");
-  searchQuery = input.value;
+// ------------- Search-Element -------------
+const searchElement = SearchBar((value) => {
+  searchQuery = value;
   page = 1;
   fetchCharacters();
 });
+searchBarContainer.append(searchElement);
 
 // ------------- Next-Button -------------
 nextButton.addEventListener("click", (event) => {
