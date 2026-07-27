@@ -2,31 +2,39 @@
 @import "components/SearchBar/SearchBar.css";
 @import "components/NavButton/NavButton.css";
 @import "components/NavPagination/NavPagination.css";
-
+@font-face {
+    font-family: "rickAndMorty";
+    src: url("./assets/WubbaLubbaDubDub.ttf") format("trueType");
+}
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    font-family: rickAndMorty;
 }
 
 :root {
-  --color-primary: rgb(51, 51, 51);
-  --color-secondary: #f6f6f6;
-  --font-family: system-ui;
+    --color-primary: rgb(51, 51, 51);
+    --color-secondary: #f6f6f6;
+    --font-family: system-ui;
 }
 
 body {
-  font-family: var(--font-family);
-  color: var(--color-primary);
-  padding: 20px;
+    font-family: var(--font-family);
+    color: var(--color-primary);
+    padding: 20px;
+    background-color: rgba(210, 201, 184);
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: rgba(151, 215, 215);
 }
 
 .title {
-  padding: 10px 0;
+    padding: 10px 0;
 }
