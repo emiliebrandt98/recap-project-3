@@ -1,11 +1,11 @@
-const cardContainer = document.querySelector('[data-js="card-container"]');
-console.log(cardContainer);
 import { fetchCharacters } from "../../index.js";
 
+const cardContainer = document.querySelector('[data-js="card-container"]');
+
 export function createCharacterCard(characters) {
-    const card = document.createElement("li");
-    card.classList.add("card");
-    card.innerHTML = `
+  const card = document.createElement("li");
+  card.classList.add("card");
+  card.innerHTML = `
     <div class="card__image-container">
                         <img
                             class="card__image"
