@@ -2,7 +2,7 @@ import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]',
+    '[data-js="search-bar-container"]',
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
@@ -28,4 +28,8 @@ async function fetchCharacters() {
     cardContainer.append(card);
   });
 }
-fetchCharacters();
+/* fetchCharacters(); */
+
+fetchCharacters().then((data) => {
+    createCharacterCard(data.results[3]);
+});
