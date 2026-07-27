@@ -11,22 +11,30 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-let maxPage = 1;
-let page = 1;
-const searchQuery = "";
+
+const maxPage = 1;
+const page = 1;
+let searchQuery = "";
+
 
 // ------------- Fetch-Api (Rick and Morty Characters) -------------
 
 const url = "https://rickandmortyapi.com/api/character";
 
 export async function fetchCharacters() {
-  cardContainer.innerHTML = "";
-  const response = await fetch(url);
-  const data = await response.json();
-  data.results.forEach((characters) => {
-    const card = createCharacterCard(characters);
-    cardContainer.append(card);
-  });
+    cardContainer.innerHTML = "";
+    const response = await fetch(`${url}?name=${searchQuery}`);
+    const data = await response.json();
+    data.results.forEach((character) => {
+        const card = createCharacterCard(character);
+        cardContainer.append(card);
+    });
 }
-
 fetchCharacters();
+
+searchBar.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = document.querySelector(".search-bar__input");
+    searchQuery = input.value;
+    fetchCharacters();
+});
