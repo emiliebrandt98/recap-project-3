@@ -26,6 +26,5 @@ export function createCharacterCard(characters) {
                         </dl>
                     </div>
     `;
-    console.log(characters.episode);
-    cardContainer.append(card);
+  return card;
 }
