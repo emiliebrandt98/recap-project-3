@@ -2,9 +2,9 @@ const cardContainer = document.querySelector('[data-js="card-container"]');
 console.log(cardContainer);
 
 export function createCharacterCard() {
-    const card = document.createElement("li");
-    card.classList.add("card");
-    card.innerHTML = `
+  const card = document.createElement("li");
+  card.classList.add("card");
+  card.innerHTML = `
     <div class="card__image-container">
                         <img
                             class="card__image"
@@ -25,8 +25,5 @@ export function createCharacterCard() {
                         </dl>
                     </div>
     `;
-    cardContainer.append(card);
+  return card;
 }
-
-console.log("hello world !");
-createCharacterCard();
