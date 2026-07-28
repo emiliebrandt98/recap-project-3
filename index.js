@@ -42,15 +42,6 @@ const searchElement = SearchBar((value) => {
 });
 searchBarContainer.append(searchElement);
 
-// -------------------------- Next-Button --------------------------
-const nextButtonElement = NavButton("next", () => {
-  if (page < maxPage) {
-    page = page + 1;
-  }
-  fetchCharacters();
-});
-navigation.append(nextButtonElement);
-
 // -------------------------- Preview-Button --------------------------
 const prevButtonElement = NavButton("previous", () => {
   if (page > 1) {
@@ -59,3 +50,12 @@ const prevButtonElement = NavButton("previous", () => {
   fetchCharacters();
 });
 navigation.append(prevButtonElement);
+
+// -------------------------- Next-Button --------------------------
+const nextButtonElement = NavButton("next", () => {
+  if (page < maxPage) {
+    page = page + 1;
+  }
+  fetchCharacters();
+});
+navigation.append(nextButtonElement);
