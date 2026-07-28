@@ -5,7 +5,7 @@ export function SearchBar(onSubmit) {
   const button = document.createElement("button");
   const icon = document.createElement("img");
 
-  // ClassList fpr Elements
+  // classList -> Elements
   form.classList.add("search-bar");
 
   input.classList.add("search-bar__input");
@@ -19,11 +19,11 @@ export function SearchBar(onSubmit) {
   button.setAttribute("aria-label", "search for character");
   button.classList.add("search-bar__button");
 
-  // Place Elements
+  // place Elements
   form.append(input, button);
   button.append(icon);
 
-  // Search-Event
+  // search-Event
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     onSubmit(input.value);
