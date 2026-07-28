@@ -1,5 +1,6 @@
 import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js";
 import { SearchBar } from "./components/SearchBar/SearchBar.js";
+import { NavButton } from "./components/NavButton/NavButton.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -33,7 +34,7 @@ export async function fetchCharacters() {
 }
 fetchCharacters();
 
-// ------------- Search-Element -------------
+// -------------------------- Search-Element --------------------------
 const searchElement = SearchBar((value) => {
   searchQuery = value;
   page = 1;
@@ -41,20 +42,20 @@ const searchElement = SearchBar((value) => {
 });
 searchBarContainer.append(searchElement);
 
-// ------------- Next-Button -------------
-nextButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  if (page < maxPage) {
-    page = page + 1;
-  }
-  fetchCharacters();
-});
-
-// ------------- Preview-Button -------------
-prevButton.addEventListener("click", (event) => {
-  event.preventDefault();
+// -------------------------- Preview-Button --------------------------
+const prevButtonElement = NavButton("previous", () => {
   if (page > 1) {
     page = page - 1;
   }
   fetchCharacters();
 });
+navigation.append(prevButtonElement);
+
+// -------------------------- Next-Button --------------------------
+const nextButtonElement = NavButton("next", () => {
+  if (page < maxPage) {
+    page = page + 1;
+  }
+  fetchCharacters();
+});
+navigation.append(nextButtonElement);
