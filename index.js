@@ -25,13 +25,18 @@ const url = "https://rickandmortyapi.com/api/character";
 export async function fetchCharacters() {
   cardContainer.innerHTML = "";
   const response = await fetch(`${url}?page=${page}&name=${searchQuery}`);
-  const data = await response.json();
-  maxPage = data.info.pages;
-  paginationElement.textContent = `${page} / ${maxPage}`;
-  data.results.forEach((characters) => {
-    const card = createCharacterCard(characters);
-    cardContainer.append(card);
-  });
+  if (!response.ok) {
+    paginationElement.textContent = `1 / 1`;
+    cardContainer.textContent = "no results";
+  } else {
+    const data = await response.json();
+    maxPage = data.info.pages;
+    paginationElement.textContent = `${page} / ${maxPage}`;
+    data.results.forEach((character) => {
+      const card = createCharacterCard(character);
+      cardContainer.append(card);
+    });
+  }
 }
 fetchCharacters();
 
@@ -47,8 +52,8 @@ searchBarContainer.append(searchElement);
 const prevButtonElement = NavButton("previous", () => {
   if (page > 1) {
     page = page - 1;
+    fetchCharacters();
   }
-  fetchCharacters();
 });
 navigation.append(prevButtonElement);
 
@@ -60,7 +65,7 @@ navigation.append(paginationElement);
 const nextButtonElement = NavButton("next", () => {
   if (page < maxPage) {
     page = page + 1;
+    fetchCharacters();
   }
-  fetchCharacters();
 });
 navigation.append(nextButtonElement);
